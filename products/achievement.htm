@@ -1,676 +1,625 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 	<meta name="keywords" content="jcsystem, J.C.System, ジェイシーシステム, 人材派遣, 受注開発, ブリッジSE, オフショア開発" />
-<title>株式会社 J.C.System</title>
+	<title>株式会社 J.C.System</title>
 
-<link href="../style.css" rel="stylesheet" type="text/css">
-<script language="JavaScript" type="text/javascript">
-<!--
-//v1.7
-// Flash Player Version Detection
-// Detect Client Browser type
-// Copyright 2005-2008 Adobe Systems Incorporated.  All rights reserved.
-var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
-var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
-var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
-function ControlVersion()
-{
-	var version;
-	var axo;
-	var e;
-	// NOTE : new ActiveXObject(strFoo) throws an exception if strFoo isn't in the registry
-	try {
-		// version will be set for 7.X or greater players
-		axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
-		version = axo.GetVariable("$version");
-	} catch (e) {
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 6.X players only
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
-			
-			// installed player is some revision of 6.0
-			// GetVariable("$version") crashes for versions 6.0.22 through 6.0.29,
-			// so we have to be careful. 
-			
-			// default to the first public version
-			version = "WIN 6,0,21,0";
-			// throws if AllowScripAccess does not exist (introduced in 6.0r47)		
-			axo.AllowScriptAccess = "always";
-			// safe to call for 6.0r47 or greater
-			version = axo.GetVariable("$version");
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 4.X or 5.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
-			version = axo.GetVariable("$version");
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 3.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
-			version = "WIN 3,0,18,0";
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 2.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
-			version = "WIN 2,0,0,11";
-		} catch (e) {
-			version = -1;
-		}
-	}
-	
-	return version;
-}
-// JavaScript helper required to detect Flash Player PlugIn version information
-function GetSwfVer(){
-	// NS/Opera version >= 3 check for Flash plugin in plugin array
-	var flashVer = -1;
-	
-	if (navigator.plugins != null && navigator.plugins.length > 0) {
-		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
-			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
-			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
-			var descArray = flashDescription.split(" ");
-			var tempArrayMajor = descArray[2].split(".");			
-			var versionMajor = tempArrayMajor[0];
-			var versionMinor = tempArrayMajor[1];
-			var versionRevision = descArray[3];
-			if (versionRevision == "") {
-				versionRevision = descArray[4];
-			}
-			if (versionRevision[0] == "d") {
-				versionRevision = versionRevision.substring(1);
-			} else if (versionRevision[0] == "r") {
-				versionRevision = versionRevision.substring(1);
-				if (versionRevision.indexOf("d") > 0) {
-					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
-				}
-			}
-			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
-		}
-	}
-	// MSN/WebTV 2.6 supports Flash 4
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
-	// WebTV 2.5 supports Flash 3
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
-	// older WebTV supports Flash 2
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
-	else if ( isIE && isWin && !isOpera ) {
-		flashVer = ControlVersion();
-	}	
-	return flashVer;
-}
-// When called with reqMajorVer, reqMinorVer, reqRevision returns true if that version or greater is available
-function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision)
-{
-	versionStr = GetSwfVer();
-	if (versionStr == -1 ) {
-		return false;
-	} else if (versionStr != 0) {
-		if(isIE && isWin && !isOpera) {
-			// Given "WIN 2,0,0,11"
-			tempArray         = versionStr.split(" "); 	// ["WIN", "2,0,0,11"]
-			tempString        = tempArray[1];			// "2,0,0,11"
-			versionArray      = tempString.split(",");	// ['2', '0', '0', '11']
-		} else {
-			versionArray      = versionStr.split(".");
-		}
-		var versionMajor      = versionArray[0];
-		var versionMinor      = versionArray[1];
-		var versionRevision   = versionArray[2];
-        	// is the major.revision >= requested major.revision AND the minor version >= requested minor
-		if (versionMajor > parseFloat(reqMajorVer)) {
-			return true;
-		} else if (versionMajor == parseFloat(reqMajorVer)) {
-			if (versionMinor > parseFloat(reqMinorVer))
-				return true;
-			else if (versionMinor == parseFloat(reqMinorVer)) {
-				if (versionRevision >= parseFloat(reqRevision))
-					return true;
-			}
-		}
-		return false;
-	}
-}
-function AC_AddExtension(src, ext)
-{
-  if (src.indexOf('?') != -1)
-    return src.replace(/\?/, ext+'?'); 
-  else
-    return src + ext;
-}
-function AC_Generateobj(objAttrs, params, embedAttrs) 
-{ 
-  var str = '';
-  if (isIE && isWin && !isOpera)
-  {
-    str += '<object ';
-    for (var i in objAttrs)
-    {
-      str += i + '="' + objAttrs[i] + '" ';
-    }
-    str += '>';
-    for (var i in params)
-    {
-      str += '<param name="' + i + '" value="' + params[i] + '" /> ';
-    }
-    str += '</object>';
-  }
-  else
-  {
-    str += '<embed ';
-    for (var i in embedAttrs)
-    {
-      str += i + '="' + embedAttrs[i] + '" ';
-    }
-    str += '> </embed>';
-  }
-  document.write(str);
-}
-function AC_FL_RunContent(){
-  var ret = 
-    AC_GetArgs
-    (  arguments, ".swf", "movie", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-     , "application/x-shockwave-flash"
-    );
-  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
-}
-function AC_SW_RunContent(){
-  var ret = 
-    AC_GetArgs
-    (  arguments, ".dcr", "src", "clsid:166B1BCA-3F9C-11CF-8075-444553540000"
-     , null
-    );
-  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
-}
-function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
-  var ret = new Object();
-  ret.embedAttrs = new Object();
-  ret.params = new Object();
-  ret.objAttrs = new Object();
-  for (var i=0; i < args.length; i=i+2){
-    var currArg = args[i].toLowerCase();    
-    switch (currArg){	
-      case "classid":
-        break;
-      case "pluginspage":
-        ret.embedAttrs[args[i]] = args[i+1];
-        break;
-      case "src":
-      case "movie":	
-        args[i+1] = AC_AddExtension(args[i+1], ext);
-        ret.embedAttrs["src"] = args[i+1];
-        ret.params[srcParamName] = args[i+1];
-        break;
-      case "onafterupdate":
-      case "onbeforeupdate":
-      case "onblur":
-      case "oncellchange":
-      case "onclick":
-      case "ondblclick":
-      case "ondrag":
-      case "ondragend":
-      case "ondragenter":
-      case "ondragleave":
-      case "ondragover":
-      case "ondrop":
-      case "onfinish":
-      case "onfocus":
-      case "onhelp":
-      case "onmousedown":
-      case "onmouseup":
-      case "onmouseover":
-      case "onmousemove":
-      case "onmouseout":
-      case "onkeypress":
-      case "onkeydown":
-      case "onkeyup":
-      case "onload":
-      case "onlosecapture":
-      case "onpropertychange":
-      case "onreadystatechange":
-      case "onrowsdelete":
-      case "onrowenter":
-      case "onrowexit":
-      case "onrowsinserted":
-      case "onstart":
-      case "onscroll":
-      case "onbeforeeditfocus":
-      case "onactivate":
-      case "onbeforedeactivate":
-      case "ondeactivate":
-      case "type":
-      case "codebase":
-      case "id":
-        ret.objAttrs[args[i]] = args[i+1];
-        break;
-      case "width":
-      case "height":
-      case "align":
-      case "vspace": 
-      case "hspace":
-      case "class":
-      case "title":
-      case "accesskey":
-      case "name":
-      case "tabindex":
-        ret.embedAttrs[args[i]] = ret.objAttrs[args[i]] = args[i+1];
-        break;
-      default:
-        ret.embedAttrs[args[i]] = ret.params[args[i]] = args[i+1];
-    }
-  }
-  ret.objAttrs["classid"] = classid;
-  if (mimeType) ret.embedAttrs["type"] = mimeType;
-  return ret;
-}
-// -->
-</script>
+	<link href="../style.css" rel="stylesheet" type="text/css">
 
-
-    <style type="text/css">
-        .style1
-        {
-            height: 17px;
-        }
-    </style>
+	<style type="text/css">
+		.style1 {
+			height: 17px;
+		}
+	</style>
 
 
 </head>
+
 <body>
-<div align="center">
-	<table width="1000" cellspacing="0" cellpadding="0">
-                            <tr>
-                             <td><img src="../images/new_header.jpg" width="1000" height="90" border="0"></td>
-                            </tr>
-                            <tr>
-                             <td><img src="../images/spacer.gif" width="1000" height="10" border="0"></td>
-                            </tr>
-		<tr>
-	                <td width="1000">
-
- <!--ムービーで使用されている URL-->
-
-<!--ムービーで使用されているテキスト-->
-
-<!-- saved from url=(0013)about:internet -->
-
-<!--
-<script language="JavaScript" type="text/javascript">
+	<div align="center">
+		<table width="1000" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<img src="../images/new_header.jpg" width="1000" height="90" border="0">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="../images/spacer.gif" width="1000" height="10" border="0">
+				</td>
+			</tr>
+			<tr>
+				<td width="1000">
+				</td>
+			</tr>
 
 
-	AC_FL_RunContent(
-		'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0',
-		'width', '1000',
-		'height', '248',
-		'src', 'jc_system2',
-		'quality', 'high',
-		'pluginspage', 'http://www.adobe.com/go/getflashplayer_jp',
-		'align', 'middle',
-		'play', 'true',
-		'loop', 'true',
-		'scale', 'showall',
-		'wmode', 'window',
-		'devicefont', 'false',
-		'id', 'jc_system2',
-		'bgcolor', '#ffffff',
-		'name', 'jc_system2',
-		'menu', 'true',
-		'allowFullScreen', 'false',
-		'allowScriptAccess','sameDomain',
-		'movie', 'jc_system2',
-		'salign', ''
-		); //end AC code
-</script>
+			<tr>
+				<td bgcolor="#ffffff">
+					<img src="../images/spacer.gif" width="1000" height="10" border="0">
+				</td>
+			</tr>
+
+		</table>
+
+		<table width="1000" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="14" bgcolor="#3398cc">
+					<img src="../images/spacer.gif" width="14" height="5" border="0">
+				</td>
+				<td width="172" bgcolor="#3398cc" align="left" class="titlefont3">
+					<a href="../index.htm">HOME</a>
+				</td>
+				<td width="16" bgcolor="#006699">
+					<img src="../images/sankaku.gif" width="16" height="21" border="0">
+				</td>
+				<td width="798" bgcolor="#006699" align="left" class="titlefont3">&nbsp;</td>
+
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#ffffff">
+					<img src="images/spacer.gif" width="1000" height="1">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#006699">
+					<img src="../images/spacer.gif" width="1000" height="2" border="0">
+				</td>
+			</tr>
 
 
-<noscript>
-	
-
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="1000" height="248" id="jc_system2" align="middle">
-	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="allowFullScreen" value="false" />
-	<param name="movie" value="jc_system2.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="jc_system2.swf" quality="high" bgcolor="#ffffff" width="1000" height="248" name="jc_system2" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_jp" />
-	</object>
-
-
-</noscript> -->
-</td>
-               </tr>
-
-
-                              <tr>
-                                          <td bgcolor="#ffffff"><img src="../images/spacer.gif" width="1000" height="10" border="0"></td>
-                              </tr>
-		
-	</table>
-
-	<table width="1000" cellspacing="0" cellpadding="0">
-		<tr>
-                                          <td width="14" bgcolor="#3398cc"><img src="../images/spacer.gif" width="14" height="5" border="0"></td>
-                                           <td width="172" bgcolor="#3398cc" align="left" class="titlefont3"><a href="../index.htm">HOME</a></td>
-			<td width="16" bgcolor="#006699"><img src="../images/sankaku.gif" width="16" height="21" border="0"></td>
-                                           <td width="798" bgcolor="#006699" align="left" class="titlefont3">&nbsp;</td>
-
-                              </tr>
-                              <tr>
-                                          <td colspan="4" bgcolor="#ffffff"><img src="images/spacer.gif" width="1000" height="1"></td>
-                              </tr>
-                              <tr>
-                                          <td colspan="4" bgcolor="#006699"><img src="../images/spacer.gif" width="1000" height="2" border="0"></td>
-                              </tr>
-		 
-		
-	</table>
+		</table>
 
 
 
 
 
-    <table width="1000" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="259" bgcolor="#f0f0f0"><img name="menu_r3_c1" src="../images/sub_menu_/menu_achieve.gif" width="259" height="42" border="0" alt=""></td>
+		<table width="1000" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="259" bgcolor="#f0f0f0">
+					<img name="menu_r3_c1" src="../images/sub_menu_/menu_achieve.gif" width="259" height="42" border="0" alt="">
+				</td>
 
-        <td width="741" bgcolor="#f0f0f0" class="font14green">&nbsp;</td>
-      </tr>
-      <tr>
-        <td width="259" bgcolor="#0177b4"><img src="../images/sub_menu_/menu_bar.gif" width="259" height="3" border="0"></td>
-        <td width="741" bgcolor="#d6d6d6"></td>
-      </tr>
-    </table>
+				<td width="741" bgcolor="#f0f0f0" class="font14green">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="259" bgcolor="#0177b4">
+					<img src="../images/sub_menu_/menu_bar.gif" width="259" height="3" border="0">
+				</td>
+				<td width="741" bgcolor="#d6d6d6"></td>
+			</tr>
+		</table>
 
-<!-- サイドメニューここから -->
+		<!-- サイドメニューここから -->
 
-    <table width="1000" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="190" valign="top" align="left">
+		<table width="1000" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="190" valign="top" align="left">
 
-<table class="titlefont" border="0" cellpadding="0" cellspacing="0" width="190">
-<!-- fwtable fwsrc="side_menu.png" fwbase="side_manu.jpg" -->
-  <tr>
-<!-- Shim row, height 1. -->
-   <td><img src="../images/side_menu/shim.gif" width="190" height="1" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="1" border="0"></td>
-  </tr>
+					<table class="titlefont" border="0" cellpadding="0" cellspacing="0" width="190">
+						<!-- fwtable fwsrc="side_menu.png" fwbase="side_manu.jpg" -->
+						<tr>
+							<!-- Shim row, height 1. -->
+							<td>
+								<img src="../images/side_menu/shim.gif" width="190" height="1" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="1" border="0">
+							</td>
+						</tr>
 
-  <tr valign="top"><!-- row 1 -->
-   <td><img name="side_manu_r01_c1" src="../images/side_menu/side_manu_r01_c1.jpg" width="190" height="16" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="16" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 2 -->
-   <td><a href="../aboutus.htm"><img name="kaisya_gaiyou" src="../images/side_menu/kaisya_gaiyou2.jpg" width="190" height="26" border="0" alt="会社概要"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 3 -->
-   <td><img name="side_manu_r03_c1" src="../images/side_menu/side_manu_r03_c1.jpg" width="190" height="14" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="14" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 4 -->
-   <td><a href="../works.htm"><img name="gyoumu_naiyou" src="../images/side_menu/gyoumu_naiyou2.jpg" width="190" height="26" border="0" alt="業務内容"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 5 -->
-   <td><img name="side_manu_r09_c1" src="../images/side_menu/side_manu_r09_c1.jpg" width="190" height="14" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="14" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 6 -->
-   <td><a href="achievement.htm"><img name="gyomu_jiseki" src="../images/side_menu/gyomu_jiseki.jpg" width="190" height="26" border="0" alt="業務実績"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 7 -->
-   <td><img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="12" border="0"></td>
-  </tr>
-    <tr>
-      <td align="right" height="34"><a href="ssk.htm">衣料小売業戦略仕入計画システム</a>&nbsp;&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" height="34"><a href="ssk2.htm">衣料小売店データ処理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-        <td align="right" height="34"><a href="jccl.htm">クリーニング店本部業務システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-        <td align="right" height="34"><a href="jcro.htm">宝石卸管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="jcka.htm">革製品卸管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="reuter.htm">ロイター証券情報受信システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="jc3k.htm">不動産総合物件管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-  <tr valign="top"><!-- row 8 -->
-   <td><img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 9 -->
-   <td><a href="../recruit.htm"><img name="recruit" src="../images/side_menu/recruit2.jpg" width="190" height="26" border="0" alt="採用情報"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 10 -->
-   <td><img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 11 -->
-   <td><a href="../privacy.htm"><img name="kojin_jyoho" src="../images/side_menu/kojin_jyoho2.jpg" width="190" height="26" border="0" alt="個人情報の取扱い"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 12 -->
-   <td><img name="side_manu_r13_c1" src="../images/side_menu/side_manu_r13_c1.jpg" width="190" height="53" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="53" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 13 -->
-   <td><a href="../contact.htm"><img name="toiawase" src="../images/side_menu/toiawase.jpg" width="190" height="31" border="0" alt="お問合せフォーム"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="31" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 14 -->
-   <td><img name="side_manu_r15_c1" src="../images/side_menu/side_manu_r15_c1.jpg" width="190" height="20" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="20" border="0"></td>
-  </tr>
+						<tr valign="top">
+							<!-- row 1 -->
+							<td>
+								<img name="side_manu_r01_c1" src="../images/side_menu/side_manu_r01_c1.jpg" width="190" height="16" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="16" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 2 -->
+							<td>
+								<a href="../aboutus.htm">
+									<img name="kaisya_gaiyou" src="../images/side_menu/kaisya_gaiyou2.jpg" width="190" height="26" border="0" alt="会社概要">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 3 -->
+							<td>
+								<img name="side_manu_r03_c1" src="../images/side_menu/side_manu_r03_c1.jpg" width="190" height="14" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="14" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 4 -->
+							<td>
+								<a href="../works.htm">
+									<img name="gyoumu_naiyou" src="../images/side_menu/gyoumu_naiyou2.jpg" width="190" height="26" border="0" alt="業務内容">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 5 -->
+							<td>
+								<img name="side_manu_r09_c1" src="../images/side_menu/side_manu_r09_c1.jpg" width="190" height="14" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="14" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 6 -->
+							<td>
+								<a href="achievement.htm">
+									<img name="gyomu_jiseki" src="../images/side_menu/gyomu_jiseki.jpg" width="190" height="26" border="0" alt="業務実績">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 7 -->
+							<td>
+								<img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="12" border="0">
+							</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="ssk.htm">衣料小売業戦略仕入計画システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="ssk2.htm">衣料小売店データ処理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jccl.htm">クリーニング店本部業務システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jcro.htm">宝石卸管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jcka.htm">革製品卸管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="reuter.htm">ロイター証券情報受信システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jc3k.htm">不動産総合物件管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 8 -->
+							<td>
+								<img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="12" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 9 -->
+							<td>
+								<a href="../recruit.htm">
+									<img name="recruit" src="../images/side_menu/recruit2.jpg" width="190" height="26" border="0" alt="採用情報">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 10 -->
+							<td>
+								<img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="12" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 11 -->
+							<td>
+								<a href="../privacy.htm">
+									<img name="kojin_jyoho" src="../images/side_menu/kojin_jyoho2.jpg" width="190" height="26" border="0" alt="個人情報の取扱い">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 12 -->
+							<td>
+								<img name="side_manu_r13_c1" src="../images/side_menu/side_manu_r13_c1.jpg" width="190" height="53" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="53" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 13 -->
+							<td>
+								<a href="../contact.htm">
+									<img name="toiawase" src="../images/side_menu/toiawase.jpg" width="190" height="31" border="0" alt="お問合せフォーム">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="31" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 14 -->
+							<td>
+								<img name="side_manu_r15_c1" src="../images/side_menu/side_manu_r15_c1.jpg" width="190" height="20" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="20" border="0">
+							</td>
+						</tr>
 
-</table><!-- サイドメニューここまで -->
+					</table>
+					<!-- サイドメニューここまで -->
 
-       </td>
-       <td width="810">
+				</td>
+				<td width="810">
 
-<div align="center">
+					<div align="center">
 
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td colspan="2" class="font14green"><div align="left">小商圏対応型衣料品店の戦略的仕入計画システム</div></td>
-      </tr>
-      <tr>
-        <td width="400"><div align="left"><img src="../images/products/ssk2.jpg" width="394" height="319"></div></td>
-        <td><div align="left">
-            衣料品小売業向けの戦略的な仕入計画の観点から、<br>
-            全体の仕入れ販売業務における主導的な計画の作成<br>
-            を支援するシステム </div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="ssk.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-    </table>
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td colspan="2" class="font14green"><div align="left">衣料小売店データ処理システム</div></td>
-      </tr>
-      <tr>
-        <td width="400"><div align="left"><img src="../images/products/ssk1.jpg" width="394" height="319"></div></td>
-        <td><div align="left">&#34915;&#26009;&#21697;&#23567;&#22770;&#26989;&#21521;&#12369;&#12398;&#25126;&#30053;&#30340;&#12394;&#20181;&#20837;&#35336;&#30011;&#12398; <br>
-  &#35251;&#28857;&#12363;&#12425;&#12289;&#20840;&#20307;&#12398;&#20181;&#20837;&#12539;&#36009;&#22770;&#26989;&#21209;&#12395;&#12362;&#12369;&#12427; <br>
-  &#20027;&#23566;&#30340;&#12394;&#35336;&#30011;&#12398;&#20316;&#25104;&#12434;&#25903;&#25588;&#12377;&#12427;&#12471;&#12473;&#12486;&#12512;&#12290;</div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="ssk2.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-    </table>
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td colspan="2" class="font14green"> <div align="left">クリーニング店本部業務管理システム </div></td>
-      </tr>
-      <tr>
-        <td width="400"><div align="left"><img src="../images/products/jccl3.jpg" width="280" height="413"></div></td>
-        <td><p align="left">本部と工場、店舗間にインターネットを通して、分散型社内業務管理を実現した総合システム。売上管理、資材管理、予算管理、小口現金管理、顧客管理機能を提供し、通信コスト の大幅な削減と、業務の効率化を実現したクリーニング業界待望の専用システム。</p>        </td>
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="jccl.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-    </table>
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td colspan="2"> <div align="left"><strong class="font14green">宝石卸業者向け仕入・加工・販売業務管理システム</strong> </div></td>
-      </tr>
-      <tr>
-        <td width="400"><div align="left"><img src="../images/products/jcro1.jpg" width="392" height="282"></div></td>
-        <td><p align="left">&#23453;&#30707;&#12394;&#12393;&#36020;&#37329;&#23646;&#21368;&#26989;&#21521;&#12369;&#12398;&#12289;&#21152;&#24037;&#31649;&#29702;&#12434;&#21547;&#12417;&#12383;&#12488;&#12540;&#12479;&#12523;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#12290;&#12377;&#12409;&#12390;&#12398;&#21830;&#21697;&#12364;&#21336;&#21697;&#31649;&#29702;&#12391;&#12354;&#12426;&#12289;&#20181;&#20837;&#12289;&#12496;&#12540;&#12467;&#12540;&#12489;&#30330;&#34892;&#12363;&#12425;&#22312;&#24235;&#31649;&#29702;&#12289;&#25345;&#20986;&#12375;&#36009;&#22770;&#12289;&#37969;&#21029;&#12539;&#37969;&#23450;&#12289;&#21152;&#24037;&#35069;&#36896;&#12289;&#22770;&#19978;&#12289;&#32013;&#21697;&#12414;&#12391;&#12487;&#12540;&#12479;&#31649;&#29702;&#12434;&#34892;&#12394;&#12358;&#12290; </p>        </td>
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="jcro.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-    </table>
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td colspan="2" class="font14green"> <div align="left">&#38761;&#35069;&#21697;&#21368;&#26989;&#32773;&#21521;&#12369;&#20181;&#20837;&#12539;&#36009;&#22770;&#12539;&#27770;&#28168;&#12471;&#12473;&#12486;&#12512;  </div></td>
-      </tr>
-      <tr>
-        <td width="400"><div align="left"><img src="../images/products/jcka1.jpg" width="274" height="209"></div></td>
-        <td><p align="left">&#12459;&#12496;&#12531;&#12394;&#12393;&#12398;&#38761;&#35069;&#21697;&#12398;&#20181;&#20837;&#12363;&#12425;&#36009;&#22770;&#12289;&#27770;&#28168;&#12414;&#12391; &#12488;&#12540;&#12479;&#12523;&#31649;&#29702;&#12377;&#12427;&#12471;&#12473;&#12486;&#12512;&#12290;&#65300;&#65296;&#31278;&#39006;&#12434;&#36229;&#12360;&#12427;&#38598;&#35336;&#20253;&#31080;&#12395;&#12424;&#12427;&#12289;&#20840;&#24037;&#31243;&#12434;&#12487;&#12540;&#12479;&#12505;&#12540;&#12473;&#21270;&#12375;&#12383;&#12471;&#12473;&#12486;&#12512;&#12290; </p>        </td>
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="jcka.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-    </table>
-
-
-
-    <table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
-      <tr>
-        <td class="font14green"> <div align="left">ロイター証券情報受信システム</div></td>
-      </tr>
-      <tr>
-        <td width="500"><div align="left"><img src="../images/products/reuter.jpg" width="500" height="230"></div></td>
-        <td><p align="left">
-            &nbsp;&nbsp;&nbsp;&nbsp;ロイター社から株、為替、先物<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;情報を受信し、DB に保存と<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;データ処理、ウェブでリアル<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;タイム表示する。</p>        </td>
-
-      </tr>
-      <tr>
-        <td colspan="2"><div align="right"><a href="reuter.htm"><img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom"></a></div></td>
-      </tr>
-      <tr>
-        <td colspan="2"><hr size="1" noshade></td>
-      </tr>
-
-    </table>
-
-
-    <table width="700" height="200"  border="0" cellpadding="0" cellspacing="0" class="titlefont">
-      <tr>
-        <td width="11%" class="style1"><p align="left" class="font14green"> その他業務実績</p></td>
-      </tr>
-      <tr>
-        <td height="13">
-          <div align="left"> 
-        　　　　　       ◆不動産物総合管理システム<br>
-        　　　　　       ◆為替業務システム<br>
-        　　　　　       ◆小売店POSレジシステム<br>
-              　　　　　 ◆ビデオ・CDレンタルシステム<br>
-        　　　　　       ◆通信販売システム<br>
-        　　　　　       ◆酒商店オンラインショップホームページ</div></td>
-      </tr>
-    </table>
-
-</div>
-
-       </td>
-      </tr>
-     </table>
-
-
-<table border="0" cellpadding="0" cellspacing="0" width="1000" bgcolor="#CEDEEE">
-  <tr>
-<!-- Shim row, height 1. -->
-   <td><img src="../images/top_logo/shim.gif" width="4" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="7" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="145" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="80" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="757" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="1" border="0"></td>
-  </tr>
-
-  <tr valign="top"><!-- row 1 -->
-   <td colspan="6"><img name="top_logo_r1_c1" src="../images/top_logo/top_logo_r1_c1.gif" width="994" height="9" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="9" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 2 -->
-   <td colspan="3"><img name="top_logo_r2_c1" src="../images/top_logo/top_logo_r2_c1.gif" width="12" height="13" border="0"></td>
-    <td colspan="3"><img name="top_logo_r2_c4" src="../images/top_logo/top_logo_r2_c4.gif" width="982" height="13" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="13" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 3 -->
-   <td colspan="4"><img name="top_logo_r3_c1" src="../images/top_logo/top_logo_r3_c1.gif" width="157" height="27" border="0"></td>
-    <td colspan="2">　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="27" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 4 -->
-   <td><img name="top_logo_r4_c1" src="../images/top_logo/top_logo_r4_c1.gif" width="4" height="13" border="0"></td>
-    <td colspan="4"><img name="top_logo_r4_c2" src="../images/top_logo/top_logo_r4_c2.gif" width="233" height="13" border="0"></td>
-    <td rowspan="3">　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="13" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 5 -->
-   <td colspan="5"><img name="top_logo_r5_c1" src="../images/top_logo/top_logo_r5_c1.gif" width="237" height="7" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="7" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 6 -->
-   <td colspan="2"><img name="top_logo_r6_c1" src="../images/top_logo/top_logo_r6_c1.gif" width="5" height="20" border="0"></td>
-    <td colspan="2" class="titlefont2" align="left" valign="top"><a href="#">STAFFログイン</a></td>
-    <td>　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="20" border="0"></td>
-  </tr>
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td colspan="2" class="font14green">
+									<div align="left">小商圏対応型衣料品店の戦略的仕入計画システム</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400">
+									<div align="left">
+										<img src="../images/products/ssk2.jpg" width="394" height="319">
+									</div>
+								</td>
+								<td>
+									<div align="left">
+										衣料品小売業向けの戦略的な仕入計画の観点から、
+										<br> 全体の仕入れ販売業務における主導的な計画の作成
+										<br> を支援するシステム </div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="ssk.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+						</table>
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td colspan="2" class="font14green">
+									<div align="left">衣料小売店データ処理システム</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400">
+									<div align="left">
+										<img src="../images/products/ssk1.jpg" width="394" height="319">
+									</div>
+								</td>
+								<td>
+									<div align="left">&#34915;&#26009;&#21697;&#23567;&#22770;&#26989;&#21521;&#12369;&#12398;&#25126;&#30053;&#30340;&#12394;&#20181;&#20837;&#35336;&#30011;&#12398;
+										<br> &#35251;&#28857;&#12363;&#12425;&#12289;&#20840;&#20307;&#12398;&#20181;&#20837;&#12539;&#36009;&#22770;&#26989;&#21209;&#12395;&#12362;&#12369;&#12427;
+										<br> &#20027;&#23566;&#30340;&#12394;&#35336;&#30011;&#12398;&#20316;&#25104;&#12434;&#25903;&#25588;&#12377;&#12427;&#12471;&#12473;&#12486;&#12512;&#12290;
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="ssk2.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+						</table>
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td colspan="2" class="font14green">
+									<div align="left">クリーニング店本部業務管理システム </div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400">
+									<div align="left">
+										<img src="../images/products/jccl3.jpg" width="280" height="413">
+									</div>
+								</td>
+								<td>
+									<p align="left">本部と工場、店舗間にインターネットを通して、分散型社内業務管理を実現した総合システム。売上管理、資材管理、予算管理、小口現金管理、顧客管理機能を提供し、通信コスト の大幅な削減と、業務の効率化を実現したクリーニング業界待望の専用システム。</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="jccl.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+						</table>
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td colspan="2">
+									<div align="left">
+										<strong class="font14green">宝石卸業者向け仕入・加工・販売業務管理システム</strong>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400">
+									<div align="left">
+										<img src="../images/products/jcro1.jpg" width="392" height="282">
+									</div>
+								</td>
+								<td>
+									<p align="left">&#23453;&#30707;&#12394;&#12393;&#36020;&#37329;&#23646;&#21368;&#26989;&#21521;&#12369;&#12398;&#12289;&#21152;&#24037;&#31649;&#29702;&#12434;&#21547;&#12417;&#12383;&#12488;&#12540;&#12479;&#12523;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#12290;&#12377;&#12409;&#12390;&#12398;&#21830;&#21697;&#12364;&#21336;&#21697;&#31649;&#29702;&#12391;&#12354;&#12426;&#12289;&#20181;&#20837;&#12289;&#12496;&#12540;&#12467;&#12540;&#12489;&#30330;&#34892;&#12363;&#12425;&#22312;&#24235;&#31649;&#29702;&#12289;&#25345;&#20986;&#12375;&#36009;&#22770;&#12289;&#37969;&#21029;&#12539;&#37969;&#23450;&#12289;&#21152;&#24037;&#35069;&#36896;&#12289;&#22770;&#19978;&#12289;&#32013;&#21697;&#12414;&#12391;&#12487;&#12540;&#12479;&#31649;&#29702;&#12434;&#34892;&#12394;&#12358;&#12290;
+										</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="jcro.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+						</table>
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td colspan="2" class="font14green">
+									<div align="left">&#38761;&#35069;&#21697;&#21368;&#26989;&#32773;&#21521;&#12369;&#20181;&#20837;&#12539;&#36009;&#22770;&#12539;&#27770;&#28168;&#12471;&#12473;&#12486;&#12512;
+										</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="400">
+									<div align="left">
+										<img src="../images/products/jcka1.jpg" width="274" height="209">
+									</div>
+								</td>
+								<td>
+									<p align="left">&#12459;&#12496;&#12531;&#12394;&#12393;&#12398;&#38761;&#35069;&#21697;&#12398;&#20181;&#20837;&#12363;&#12425;&#36009;&#22770;&#12289;&#27770;&#28168;&#12414;&#12391;
+										&#12488;&#12540;&#12479;&#12523;&#31649;&#29702;&#12377;&#12427;&#12471;&#12473;&#12486;&#12512;&#12290;&#65300;&#65296;&#31278;&#39006;&#12434;&#36229;&#12360;&#12427;&#38598;&#35336;&#20253;&#31080;&#12395;&#12424;&#12427;&#12289;&#20840;&#24037;&#31243;&#12434;&#12487;&#12540;&#12479;&#12505;&#12540;&#12473;&#21270;&#12375;&#12383;&#12471;&#12473;&#12486;&#12512;&#12290;
+										</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="jcka.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+						</table>
 
 
-</table>
+
+						<table width="700" border="0" cellpadding="0" cellspacing="0" class="fontgray">
+							<tr>
+								<td class="font14green">
+									<div align="left">ロイター証券情報受信システム</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="500">
+									<div align="left">
+										<img src="../images/products/reuter.jpg" width="500" height="230">
+									</div>
+								</td>
+								<td>
+									<p align="left">
+										&nbsp;&nbsp;&nbsp;&nbsp;ロイター社から株、為替、先物
+										<br> &nbsp;&nbsp;&nbsp;&nbsp;情報を受信し、DB に保存と
+										<br> &nbsp;&nbsp;&nbsp;&nbsp;データ処理、ウェブでリアル
+										<br> &nbsp;&nbsp;&nbsp;&nbsp;タイム表示する。
+									</p>
+								</td>
+
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="right">
+										<a href="reuter.htm">
+											<img src="../images/menu_r5_c3.gif" alt="" name="menu_r5_c3" width="65" height="20" border="0" align="bottom">
+										</a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<hr size="1" noshade>
+								</td>
+							</tr>
+
+						</table>
 
 
-<div align="center" class="fontbottom">Copyright(C)2009 JC.SYSTEM inc. All rights reserved.</div>
-</div>
+						<table width="700" height="200" border="0" cellpadding="0" cellspacing="0" class="titlefont">
+							<tr>
+								<td width="11%" class="style1">
+									<p align="left" class="font14green"> その他業務実績</p>
+								</td>
+							</tr>
+							<tr>
+								<td height="13">
+									<div align="left">
+										◆不動産物総合管理システム
+										<br> 　　　　　 ◆為替業務システム
+										<br> 　　　　　 ◆小売店POSレジシステム
+										<br> 　　　　　 ◆ビデオ・CDレンタルシステム
+										<br> 　　　　　 ◆通信販売システム
+										<br> 　　　　　 ◆酒商店オンラインショップホームページ</div>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+
+				</td>
+			</tr>
+		</table>
+
+
+		<table border="0" cellpadding="0" cellspacing="0" width="1000" bgcolor="#CEDEEE">
+			<tr>
+				<!-- Shim row, height 1. -->
+				<td>
+					<img src="../images/top_logo/shim.gif" width="4" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="7" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="145" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="80" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="757" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="1" border="0">
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<!-- row 1 -->
+				<td colspan="6">
+					<img name="top_logo_r1_c1" src="../images/top_logo/top_logo_r1_c1.gif" width="994" height="9" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="9" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 2 -->
+				<td colspan="3">
+					<img name="top_logo_r2_c1" src="../images/top_logo/top_logo_r2_c1.gif" width="12" height="13" border="0">
+				</td>
+				<td colspan="3">
+					<img name="top_logo_r2_c4" src="../images/top_logo/top_logo_r2_c4.gif" width="982" height="13" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="13" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 3 -->
+				<td colspan="4">
+					<img name="top_logo_r3_c1" src="../images/top_logo/top_logo_r3_c1.gif" width="157" height="27" border="0">
+				</td>
+				<td colspan="2">　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="27" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 4 -->
+				<td>
+					<img name="top_logo_r4_c1" src="../images/top_logo/top_logo_r4_c1.gif" width="4" height="13" border="0">
+				</td>
+				<td colspan="4">
+					<img name="top_logo_r4_c2" src="../images/top_logo/top_logo_r4_c2.gif" width="233" height="13" border="0">
+				</td>
+				<td rowspan="3">　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="13" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 5 -->
+				<td colspan="5">
+					<img name="top_logo_r5_c1" src="../images/top_logo/top_logo_r5_c1.gif" width="237" height="7" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="7" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 6 -->
+				<td colspan="2">
+					<img name="top_logo_r6_c1" src="../images/top_logo/top_logo_r6_c1.gif" width="5" height="20" border="0">
+				</td>
+				<td colspan="2" class="titlefont2" align="left" valign="top">
+					<a href="#">STAFFログイン</a>
+				</td>
+				<td>　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="20" border="0">
+				</td>
+			</tr>
+
+
+		</table>
+
+
+		<div align="center" class="fontbottom">Copyright(C)2009 JC.SYSTEM inc. All rights reserved.</div>
+	</div>
 </body>
+
 </html>

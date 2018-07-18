@@ -1,675 +1,591 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 	<meta name="keywords" content="jcsystem, J.C.System, ジェイシーシステム, 人材派遣, 受注開発, ブリッジSE, オフショア開発" />
-<title>株式会社 J.C.System</title>
-<link href="../style.css" rel="stylesheet" type="text/css">
-
-<script language="JavaScript" type="text/javascript">
-<!--
-//v1.7
-// Flash Player Version Detection
-// Detect Client Browser type
-// Copyright 2005-2008 Adobe Systems Incorporated.  All rights reserved.
-var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
-var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
-var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
-function ControlVersion()
-{
-	var version;
-	var axo;
-	var e;
-	// NOTE : new ActiveXObject(strFoo) throws an exception if strFoo isn't in the registry
-	try {
-		// version will be set for 7.X or greater players
-		axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.7");
-		version = axo.GetVariable("$version");
-	} catch (e) {
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 6.X players only
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.6");
-			
-			// installed player is some revision of 6.0
-			// GetVariable("$version") crashes for versions 6.0.22 through 6.0.29,
-			// so we have to be careful. 
-			
-			// default to the first public version
-			version = "WIN 6,0,21,0";
-			// throws if AllowScripAccess does not exist (introduced in 6.0r47)		
-			axo.AllowScriptAccess = "always";
-			// safe to call for 6.0r47 or greater
-			version = axo.GetVariable("$version");
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 4.X or 5.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
-			version = axo.GetVariable("$version");
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 3.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash.3");
-			version = "WIN 3,0,18,0";
-		} catch (e) {
-		}
-	}
-	if (!version)
-	{
-		try {
-			// version will be set for 2.X player
-			axo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
-			version = "WIN 2,0,0,11";
-		} catch (e) {
-			version = -1;
-		}
-	}
-	
-	return version;
-}
-// JavaScript helper required to detect Flash Player PlugIn version information
-function GetSwfVer(){
-	// NS/Opera version >= 3 check for Flash plugin in plugin array
-	var flashVer = -1;
-	
-	if (navigator.plugins != null && navigator.plugins.length > 0) {
-		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
-			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
-			var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
-			var descArray = flashDescription.split(" ");
-			var tempArrayMajor = descArray[2].split(".");			
-			var versionMajor = tempArrayMajor[0];
-			var versionMinor = tempArrayMajor[1];
-			var versionRevision = descArray[3];
-			if (versionRevision == "") {
-				versionRevision = descArray[4];
-			}
-			if (versionRevision[0] == "d") {
-				versionRevision = versionRevision.substring(1);
-			} else if (versionRevision[0] == "r") {
-				versionRevision = versionRevision.substring(1);
-				if (versionRevision.indexOf("d") > 0) {
-					versionRevision = versionRevision.substring(0, versionRevision.indexOf("d"));
-				}
-			}
-			var flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
-		}
-	}
-	// MSN/WebTV 2.6 supports Flash 4
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
-	// WebTV 2.5 supports Flash 3
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
-	// older WebTV supports Flash 2
-	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
-	else if ( isIE && isWin && !isOpera ) {
-		flashVer = ControlVersion();
-	}	
-	return flashVer;
-}
-// When called with reqMajorVer, reqMinorVer, reqRevision returns true if that version or greater is available
-function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision)
-{
-	versionStr = GetSwfVer();
-	if (versionStr == -1 ) {
-		return false;
-	} else if (versionStr != 0) {
-		if(isIE && isWin && !isOpera) {
-			// Given "WIN 2,0,0,11"
-			tempArray         = versionStr.split(" "); 	// ["WIN", "2,0,0,11"]
-			tempString        = tempArray[1];			// "2,0,0,11"
-			versionArray      = tempString.split(",");	// ['2', '0', '0', '11']
-		} else {
-			versionArray      = versionStr.split(".");
-		}
-		var versionMajor      = versionArray[0];
-		var versionMinor      = versionArray[1];
-		var versionRevision   = versionArray[2];
-        	// is the major.revision >= requested major.revision AND the minor version >= requested minor
-		if (versionMajor > parseFloat(reqMajorVer)) {
-			return true;
-		} else if (versionMajor == parseFloat(reqMajorVer)) {
-			if (versionMinor > parseFloat(reqMinorVer))
-				return true;
-			else if (versionMinor == parseFloat(reqMinorVer)) {
-				if (versionRevision >= parseFloat(reqRevision))
-					return true;
-			}
-		}
-		return false;
-	}
-}
-function AC_AddExtension(src, ext)
-{
-  if (src.indexOf('?') != -1)
-    return src.replace(/\?/, ext+'?'); 
-  else
-    return src + ext;
-}
-function AC_Generateobj(objAttrs, params, embedAttrs) 
-{ 
-  var str = '';
-  if (isIE && isWin && !isOpera)
-  {
-    str += '<object ';
-    for (var i in objAttrs)
-    {
-      str += i + '="' + objAttrs[i] + '" ';
-    }
-    str += '>';
-    for (var i in params)
-    {
-      str += '<param name="' + i + '" value="' + params[i] + '" /> ';
-    }
-    str += '</object>';
-  }
-  else
-  {
-    str += '<embed ';
-    for (var i in embedAttrs)
-    {
-      str += i + '="' + embedAttrs[i] + '" ';
-    }
-    str += '> </embed>';
-  }
-  document.write(str);
-}
-function AC_FL_RunContent(){
-  var ret = 
-    AC_GetArgs
-    (  arguments, ".swf", "movie", "clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-     , "application/x-shockwave-flash"
-    );
-  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
-}
-function AC_SW_RunContent(){
-  var ret = 
-    AC_GetArgs
-    (  arguments, ".dcr", "src", "clsid:166B1BCA-3F9C-11CF-8075-444553540000"
-     , null
-    );
-  AC_Generateobj(ret.objAttrs, ret.params, ret.embedAttrs);
-}
-function AC_GetArgs(args, ext, srcParamName, classid, mimeType){
-  var ret = new Object();
-  ret.embedAttrs = new Object();
-  ret.params = new Object();
-  ret.objAttrs = new Object();
-  for (var i=0; i < args.length; i=i+2){
-    var currArg = args[i].toLowerCase();    
-    switch (currArg){	
-      case "classid":
-        break;
-      case "pluginspage":
-        ret.embedAttrs[args[i]] = args[i+1];
-        break;
-      case "src":
-      case "movie":	
-        args[i+1] = AC_AddExtension(args[i+1], ext);
-        ret.embedAttrs["src"] = args[i+1];
-        ret.params[srcParamName] = args[i+1];
-        break;
-      case "onafterupdate":
-      case "onbeforeupdate":
-      case "onblur":
-      case "oncellchange":
-      case "onclick":
-      case "ondblclick":
-      case "ondrag":
-      case "ondragend":
-      case "ondragenter":
-      case "ondragleave":
-      case "ondragover":
-      case "ondrop":
-      case "onfinish":
-      case "onfocus":
-      case "onhelp":
-      case "onmousedown":
-      case "onmouseup":
-      case "onmouseover":
-      case "onmousemove":
-      case "onmouseout":
-      case "onkeypress":
-      case "onkeydown":
-      case "onkeyup":
-      case "onload":
-      case "onlosecapture":
-      case "onpropertychange":
-      case "onreadystatechange":
-      case "onrowsdelete":
-      case "onrowenter":
-      case "onrowexit":
-      case "onrowsinserted":
-      case "onstart":
-      case "onscroll":
-      case "onbeforeeditfocus":
-      case "onactivate":
-      case "onbeforedeactivate":
-      case "ondeactivate":
-      case "type":
-      case "codebase":
-      case "id":
-        ret.objAttrs[args[i]] = args[i+1];
-        break;
-      case "width":
-      case "height":
-      case "align":
-      case "vspace": 
-      case "hspace":
-      case "class":
-      case "title":
-      case "accesskey":
-      case "name":
-      case "tabindex":
-        ret.embedAttrs[args[i]] = ret.objAttrs[args[i]] = args[i+1];
-        break;
-      default:
-        ret.embedAttrs[args[i]] = ret.params[args[i]] = args[i+1];
-    }
-  }
-  ret.objAttrs["classid"] = classid;
-  if (mimeType) ret.embedAttrs["type"] = mimeType;
-  return ret;
-}
-// -->
-</script>
-
-
+	<title>株式会社 J.C.System</title>
+	<link href="../style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<div align="center">
-	
-	<table width="1000" cellspacing="0" cellpadding="0">
-                            <tr>
-                             <td><img src="../images/new_header.jpg" width="1000" height="90" border="0"></td>
-                            </tr>
-                            <tr>
-                             <td><img src="../images/spacer.gif" width="1000" height="10" border="0"></td>
-                            </tr>
-		<tr>
-	                <td width="1000">
+	<div align="center">
 
- <!--ムービーで使用されている URL-->
-
-<!--ムービーで使用されているテキスト-->
-
-<!-- saved from url=(0013)about:internet -->
-
-<!--
-<script language="JavaScript" type="text/javascript">
+		<table width="1000" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+					<img src="../images/new_header.jpg" width="1000" height="90" border="0">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="../images/spacer.gif" width="1000" height="10" border="0">
+				</td>
+			</tr>
+			<tr>
+				<td width="1000">
+				</td>
+			</tr>
 
 
-	AC_FL_RunContent(
-		'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0',
-		'width', '1000',
-		'height', '248',
-		'src', 'jc_system2',
-		'quality', 'high',
-		'pluginspage', 'http://www.adobe.com/go/getflashplayer_jp',
-		'align', 'middle',
-		'play', 'true',
-		'loop', 'true',
-		'scale', 'showall',
-		'wmode', 'window',
-		'devicefont', 'false',
-		'id', 'jc_system2',
-		'bgcolor', '#ffffff',
-		'name', 'jc_system2',
-		'menu', 'true',
-		'allowFullScreen', 'false',
-		'allowScriptAccess','sameDomain',
-		'movie', 'jc_system2',
-		'salign', ''
-		); //end AC code
-</script>
+			<tr>
+				<td bgcolor="#ffffff">
+					<img src="../images/spacer.gif" width="1000" height="10" border="0">
+				</td>
+			</tr>
+
+		</table>
+
+		<table width="1000" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="14" bgcolor="#3398cc">
+					<img src="../images/spacer.gif" width="14" height="5" border="0">
+				</td>
+				<td width="172" bgcolor="#3398cc" align="left" class="titlefont3">
+					<a href="../index.htm">HOME</a>
+				</td>
+				<td width="16" bgcolor="#006699">
+					<img src="../images/sankaku.gif" width="16" height="21" border="0">
+				</td>
+				<td width="798" bgcolor="#006699" align="left" class="titlefont3">&nbsp;</td>
+
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#ffffff">
+					<img src="../images/spacer.gif" width="1000" height="1">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#006699">
+					<img src="../images/spacer.gif" width="1000" height="2">
+				</td>
+			</tr>
 
 
-<noscript>
-	
-
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="1000" height="248" id="jc_system2" align="middle">
-	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="allowFullScreen" value="false" />
-	<param name="movie" value="jc_system2.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="jc_system2.swf" quality="high" bgcolor="#ffffff" width="1000" height="248" name="jc_system2" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer_jp" />
-	</object>
+		</table>
 
 
-</noscript> -->
-</td>
-               </tr>
+		<table width="1000" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="259" bgcolor="#f0f0f0">
+					<img name="menu_r3_c1" src="../images/sub_menu_/menu_achieve.gif" width="259" height="42" border="0" alt="">
+				</td>
+
+				<td width="741" bgcolor="#f0f0f0" class="font14green">クリーニングチェーン本部向けWeb業務管理システム</td>
+			</tr>
+			<tr>
+				<td width="259" bgcolor="#0177b4">
+					<img src="../images/sub_menu_/menu_bar.gif" width="259" height="3" border="0">
+				</td>
+				<td width="741" bgcolor="#d6d6d6"></td>
+			</tr>
+		</table>
+
+		<table width="1000" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="259" valign="top" align="left">
 
 
-                              <tr>
-                                          <td bgcolor="#ffffff"><img src="../images/spacer.gif" width="1000" height="10" border="0"></td>
-                              </tr>
-		
-	</table>
+					<!-- サイドメニューここから -->
+					<table class="titlefont" border="0" cellpadding="0" cellspacing="0" width="190">
+						<!-- fwtable fwsrc="side_menu.png" fwbase="side_manu.jpg" -->
+						<tr>
+							<!-- Shim row, height 1. -->
+							<td>
+								<img src="../images/side_menu/shim.gif" width="190" height="1" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="1" border="0">
+							</td>
+						</tr>
 
-	<table width="1000" cellspacing="0" cellpadding="0">
-		<tr>
-                                          <td width="14" bgcolor="#3398cc"><img src="../images/spacer.gif" width="14" height="5" border="0"></td>
-                                           <td width="172" bgcolor="#3398cc" align="left" class="titlefont3"><a href="../index.htm">HOME</a></td>
-			<td width="16" bgcolor="#006699"><img src="../images/sankaku.gif" width="16" height="21" border="0"></td>
-                                           <td width="798" bgcolor="#006699" align="left" class="titlefont3">&nbsp;</td>
+						<tr valign="top">
+							<!-- row 1 -->
+							<td>
+								<img name="side_manu_r01_c1" src="../images/side_menu/side_manu_r01_c1.jpg" width="190" height="16" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="16" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 2 -->
+							<td>
+								<a href="../aboutus.htm">
+									<img name="kaisya_gaiyou" src="../images/side_menu/kaisya_gaiyou2.jpg" width="190" height="26" border="0" alt="会社概要">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 3 -->
+							<td>
+								<img name="side_manu_r03_c1" src="../images/side_menu/side_manu_r03_c1.jpg" width="190" height="14" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="14" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 4 -->
+							<td>
+								<a href="../works.htm">
+									<img name="gyoumu_naiyou" src="../images/side_menu/gyoumu_naiyou2.jpg" width="190" height="26" border="0" alt="業務内容">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 9 -->
+							<td>
+								<img name="side_manu_r09_c1" src="../images/side_menu/side_manu_r09_c1.jpg" width="190" height="14" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="14" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 10 -->
+							<td>
+								<a href="achievement.htm">
+									<img name="gyomu_jiseki" src="../images/side_menu/gyomu_jiseki.jpg" width="190" height="26" border="0" alt="業務実績">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="ssk.htm">衣料小売業戦略仕入計画システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="ssk2.htm">衣料小売店データ処理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34" bgcolor="#f0f0f0">クリーニング店本部業務システム&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jcro.htm">宝石卸管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jcka.htm">革製品卸管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="reuter.htm">ロイター証券情報受信システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="right" height="34">
+								<a href="jc3k.htm">不動産総合物件管理システム</a>&nbsp;&nbsp;</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 8 -->
+							<td>
+								<img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="12" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 9 -->
+							<td>
+								<a href="../recruit.htm">
+									<img name="recruit" src="../images/side_menu/recruit2.jpg" width="190" height="26" border="0" alt="採用情報">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 11 -->
+							<td>
+								<img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="12" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 12 -->
+							<td>
+								<a href="../privacy.htm">
+									<img name="kojin_jyoho" src="../images/side_menu/kojin_jyoho2.jpg" width="190" height="26" border="0" alt="個人情報の取扱い">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="26" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 13 -->
+							<td>
+								<img name="side_manu_r13_c1" src="../images/side_menu/side_manu_r13_c1.jpg" width="190" height="53" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="53" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 14 -->
+							<td>
+								<a href="../contact.htm">
+									<img name="toiawase" src="../images/side_menu/toiawase.jpg" width="190" height="31" border="0" alt="お問合せフォーム">
+								</a>
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="31" border="0">
+							</td>
+						</tr>
+						<tr valign="top">
+							<!-- row 15 -->
+							<td>
+								<img name="side_manu_r15_c1" src="../images/side_menu/side_manu_r15_c1.jpg" width="190" height="20" border="0">
+							</td>
+							<td>
+								<img src="../images/side_menu/shim.gif" width="1" height="20" border="0">
+							</td>
+						</tr>
 
-                              </tr>
-                              <tr>
-                                          <td colspan="4" bgcolor="#ffffff"><img src="../images/spacer.gif" width="1000" height="1"></td>
-                              </tr>
-                              <tr>
-                                          <td colspan="4" bgcolor="#006699"><img src="../images/spacer.gif" width="1000" height="2"></td>
-                              </tr>
-		 
-		
-	</table>
+					</table>
+					<!-- サイドメニューここまで -->
+
+				</td>
+				<td align="center" valign="top">
+					<table width="88%" border="0" cellpadding="0" cellspacing="5" class="fontgray">
+						<tr>
+							<td width="100%">
+								<p align="left">本部と工場、店舗間にインターネットを通して、 分散型社内業務管理を実現した総合システムです。
+									<br> 売上管理、資材管理、予算管理、小口現金管理、顧客管理機能を提供し、
+									<br> 通信コストの大幅な削減と、 業務の効率化を実現したクリーニング業界待望の専用システムです。 </p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">
+									<img src="../images/products/jccl1.jpg" width="550" height="399">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="right">
+									<img src="../images/products/jccl8.jpg" width="284" height="87">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left" class="font14green"> ■ システム特徴： </div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="5%" valign="top">○</td>
+										<td width="95%">
+											<div align="left">工場および営業店舗は、 Web サイトのみ利用するため、専用マシン、および専用ソフトの導入は不要です。 そのため導入コストが安く、規模と状況によって貴社にあわせて自在にシステム化ができます。
+												<br> また、システム維持保守コストも安くなる。
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">本部と工場、営業店舗間はインターネットを利用するため、通信コストを大幅に削減できる。</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">すべてのデータはインターネットを利用し、本部サーバーへ集中するシステムのため、重複作業を排除し、本部の業務効率 を格段に向上できます。</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">売上管理では、規模別歩合、手数料、別建て立替金の計算も 自由自在にできる他、小口現金管理の会計処理と連動可能な ため、トラブル処理経費、弁済処理、修理実費等のイレギュラー処理にも対応できるように構成されています。</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">資材管理では、リアルタイムで本部の在庫確認、および各工場、店舗から本部へ自動発注→本部から外部発注処理ができます。 また、本部一括仕入により、仕入コストを削減できます。</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">予算管理では、前年実績を自動参照し、各店舗の月次売上予算を 自動作成できます。</div>
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">○</td>
+										<td>
+											<div align="left">顧客データは、本部一括で管理しているため、履歴分析や販売促進への活用機能を各店舗が共用できます。 データ流出防止にも対処されています。
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="font14green">
+								<div align="left">■ 《店舗/工場 業務管理機能Webページ 》 </div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td colspan="3">
+											<div align="center">
+												<img src="../images/products/jccl2.jpg" width="330" height="234">
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td width="217">
+											<div align="left" class="font14green">■ 《本部業務管理メインメニュー》 </div>
+										</td>
+										<td width="70">
+											<img src="../images/products/jccl5.jpg" width="70" height="22">
+										</td>
+										<td width="274" align="left">
+											<img src="../images/products/jccl4.jpg" width="50" height="51">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" align="right" valign="top">
+											<img src="../images/products/jccl3_1.jpg" width="235" height="160">
+										</td>
+										<td align="left" valign="top">
+											<img src="../images/products/jccl3_2.jpg" width="274" height="228">
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">
+									<span class="font14green">■ システム構成</span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">
+									<img src="../images/products/jccl13.jpg" width="560" height="249">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="right">
+									<img src="../images/products/jccl12.jpg" width="308" height="162">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">
+									<img src="../images/products/jccl10.jpg" width="560" height="460"> </div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="right">
+									<img src="../images/products/jccl11.jpg" width="307" height="163">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left" class="font14green">■ ソフト開発環境：</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">
+									<table border="0" cellpadding="2" cellspacing="1" bgcolor="#D4D0C8">
+										<tr bgcolor="#FFFFFF">
+											<td width="86" rowspan="5" valign="center">本部サーバ </td>
+											<td width="283">Windouws NT4.0 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　IIS4.0 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　Transaction　Server </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　SQL　Server7.0 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　ASP　　　　　　 </td>
+										</tr>
+										<tr bgcolor="#FFFFFF">
+											<td rowspan="3" valign="center" bgcolor="#FFFFFF">本部クライアント </td>
+											<td bgcolor="#FFFFFF">Windows NT4.0 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　MS　ACCESS2000 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">VB 6.0 </td>
+										</tr>
+										<tr bgcolor="#FFFFFF">
+											<td rowspan="2" align="left" valign="center" bgcolor="#FFFFFF">工場側クライアント </td>
+											<td align="left" valign="bottom" bgcolor="#FFFFFF">　Windows 98/ME/XP/2000 </td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">　Internet　Explorer5以上 </td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left" class="font14green">■ 業務実績
+
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">本システムは、２０００年に基幹システムを開発完了し、規模約５００店舗の大手クリーニング会社にリリースしたもので実証済みです。</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p align="left">&nbsp;</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div align="left">◆ 詳しい資料をご用意しております。ぜひ
+									<a href="../contact.htm ">お問い合わせ </a>ください。 </div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		<!-- フッターここから -->
+		<table border="0" cellpadding="0" cellspacing="0" width="1000" bgcolor="#CEDEEE">
+			<tr>
+				<!-- Shim row, height 1. -->
+				<td>
+					<img src="../images/top_logo/shim.gif" width="4" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="7" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="145" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="80" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="757" height="1" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="1" border="0">
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<!-- row 1 -->
+				<td colspan="6">
+					<img name="top_logo_r1_c1" src="../images/top_logo/top_logo_r1_c1.gif" width="994" height="9" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="9" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 2 -->
+				<td colspan="3">
+					<img name="top_logo_r2_c1" src="../images/top_logo/top_logo_r2_c1.gif" width="12" height="13" border="0">
+				</td>
+				<td colspan="3">
+					<img name="top_logo_r2_c4" src="../images/top_logo/top_logo_r2_c4.gif" width="982" height="13" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="13" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 3 -->
+				<td colspan="4">
+					<img name="top_logo_r3_c1" src="../images/top_logo/top_logo_r3_c1.gif" width="157" height="27" border="0">
+				</td>
+				<td colspan="2">　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="27" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 4 -->
+				<td>
+					<img name="top_logo_r4_c1" src="../images/top_logo/top_logo_r4_c1.gif" width="4" height="13" border="0">
+				</td>
+				<td colspan="4">
+					<img name="top_logo_r4_c2" src="../images/top_logo/top_logo_r4_c2.gif" width="233" height="13" border="0">
+				</td>
+				<td rowspan="3">　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="13" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 5 -->
+				<td colspan="5">
+					<img name="top_logo_r5_c1" src="../images/top_logo/top_logo_r5_c1.gif" width="237" height="7" border="0">
+				</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="7" border="0">
+				</td>
+			</tr>
+			<tr valign="top">
+				<!-- row 6 -->
+				<td colspan="2">
+					<img name="top_logo_r6_c1" src="../images/top_logo/top_logo_r6_c1.gif" width="5" height="20" border="0">
+				</td>
+				<td colspan="2" class="titlefont2" align="left" valign="top">
+					<a href="#">STAFFログイン</a>
+				</td>
+				<td>　</td>
+				<td>
+					<img src="../images/top_logo/shim.gif" width="1" height="20" border="0">
+				</td>
+			</tr>
 
 
-    <table width="1000" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="259" bgcolor="#f0f0f0"><img name="menu_r3_c1" src="../images/sub_menu_/menu_achieve.gif" width="259" height="42" border="0" alt=""></td>
-
-        <td width="741" bgcolor="#f0f0f0" class="font14green">クリーニングチェーン本部向けWeb業務管理システム</td>
-      </tr>
-      <tr>
-        <td width="259" bgcolor="#0177b4"><img src="../images/sub_menu_/menu_bar.gif" width="259" height="3" border="0"></td>
-        <td width="741" bgcolor="#d6d6d6"></td>
-      </tr>
-    </table>
-
-    <table width="1000" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="259" valign="top" align="left">
+		</table>
 
 
- <!-- サイドメニューここから -->
-<table class="titlefont" border="0" cellpadding="0" cellspacing="0" width="190">
-<!-- fwtable fwsrc="side_menu.png" fwbase="side_manu.jpg" -->
-  <tr>
-<!-- Shim row, height 1. -->
-   <td><img src="../images/side_menu/shim.gif" width="190" height="1" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="1" border="0"></td>
-  </tr>
+		<div align="center" class="fontbottom">Copyright(C)2009 JC.SYSTEM inc. All rights reserved.</div>
+		<!-- フッターここまで -->
 
-  <tr valign="top"><!-- row 1 -->
-   <td><img name="side_manu_r01_c1" src="../images/side_menu/side_manu_r01_c1.jpg" width="190" height="16" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="16" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 2 -->
-   <td><a href="../aboutus.htm"><img name="kaisya_gaiyou" src="../images/side_menu/kaisya_gaiyou2.jpg" width="190" height="26" border="0" alt="会社概要"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 3 -->
-   <td><img name="side_manu_r03_c1" src="../images/side_menu/side_manu_r03_c1.jpg" width="190" height="14" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="14" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 4 -->
-   <td><a href="../works.htm"><img name="gyoumu_naiyou" src="../images/side_menu/gyoumu_naiyou2.jpg" width="190" height="26" border="0" alt="業務内容"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 9 -->
-   <td><img name="side_manu_r09_c1" src="../images/side_menu/side_manu_r09_c1.jpg" width="190" height="14" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="14" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 10 -->
-   <td><a href="achievement.htm"><img name="gyomu_jiseki" src="../images/side_menu/gyomu_jiseki.jpg" width="190" height="26" border="0" alt="業務実績"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-   <tr>
-   <td align="right" height="34"><a href="ssk.htm">衣料小売業戦略仕入計画システム</a>&nbsp;&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="right" height="34"><a href="ssk2.htm">衣料小売店データ処理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-        <td align="right" height="34" bgcolor="#f0f0f0">クリーニング店本部業務システム&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-        <td align="right" height="34"><a href="jcro.htm">宝石卸管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="jcka.htm">革製品卸管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="reuter.htm">ロイター証券情報受信システム</a>&nbsp;&nbsp;</td>
-     </tr>
-     <tr>
-         <td align="right" height="34"><a href="jc3k.htm">不動産総合物件管理システム</a>&nbsp;&nbsp;</td>
-     </tr>
-  <tr valign="top"><!-- row 8 -->
-   <td><img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 9 -->
-   <td><a href="../recruit.htm"><img name="recruit" src="../images/side_menu/recruit2.jpg" width="190" height="26" border="0" alt="採用情報"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 11 -->
-   <td><img name="side_manu_r11_c1" src="../images/side_menu/side_manu_r11_c1.jpg" width="190" height="12" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 12 -->
-   <td><a href="../privacy.htm"><img name="kojin_jyoho" src="../images/side_menu/kojin_jyoho2.jpg" width="190" height="26" border="0" alt="個人情報の取扱い"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="26" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 13 -->
-   <td><img name="side_manu_r13_c1" src="../images/side_menu/side_manu_r13_c1.jpg" width="190" height="53" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="53" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 14 -->
-   <td><a href="../contact.htm"><img name="toiawase" src="../images/side_menu/toiawase.jpg" width="190" height="31" border="0" alt="お問合せフォーム"></a></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="31" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 15 -->
-   <td><img name="side_manu_r15_c1" src="../images/side_menu/side_manu_r15_c1.jpg" width="190" height="20" border="0"></td>
-   <td><img src="../images/side_menu/shim.gif" width="1" height="20" border="0"></td>
-  </tr>
-
-</table><!-- サイドメニューここまで -->
-
-       </td>
-        <td align="center" valign="top"><table width="88%"  border="0" cellpadding="0" cellspacing="5" class="fontgray">
-            <tr>
-              <td width="100%"><p align="left">本部と工場、店舗間にインターネットを通して、 分散型社内業務管理を実現した総合システムです。 <br>
-                売上管理、資材管理、予算管理、小口現金管理、顧客管理機能を提供し、 <br>
-                通信コストの大幅な削減と、 業務の効率化を実現したクリーニング業界待望の専用システムです。 </p>
-              </td>
-            </tr>
-            <tr>
-              <td><div align="left"><img src="../images/products/jccl1.jpg" width="550" height="399"></div></td>
-            </tr>
-            <tr>
-              <td><div align="right"><img src="../images/products/jccl8.jpg" width="284" height="87"></div></td>
-            </tr>
-            <tr>
-              <td><div align="left" class="font14green"> ■ システム特徴： </div></td>
-            </tr>
-            <tr>
-              <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td width="5%" valign="top">○</td>
-                  <td width="95%"><div align="left">工場および営業店舗は、 Web サイトのみ利用するため、専用マシン、および専用ソフトの導入は不要です。 そのため導入コストが安く、規模と状況によって貴社にあわせて自在にシステム化ができます。<br>
-  また、システム維持保守コストも安くなる。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">本部と工場、営業店舗間はインターネットを利用するため、通信コストを大幅に削減できる。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">すべてのデータはインターネットを利用し、本部サーバーへ集中するシステムのため、重複作業を排除し、本部の業務効率 を格段に向上できます。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">売上管理では、規模別歩合、手数料、別建て立替金の計算も 自由自在にできる他、小口現金管理の会計処理と連動可能な ため、トラブル処理経費、弁済処理、修理実費等のイレギュラー処理にも対応できるように構成されています。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">資材管理では、リアルタイムで本部の在庫確認、および各工場、店舗から本部へ自動発注→本部から外部発注処理ができます。 また、本部一括仕入により、仕入コストを削減できます。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">予算管理では、前年実績を自動参照し、各店舗の月次売上予算を 自動作成できます。</div></td>
-                </tr>
-                <tr>
-                  <td valign="top">○</td>
-                  <td><div align="left">顧客データは、本部一括で管理しているため、履歴分析や販売促進への活用機能を各店舗が共用できます。 
-                      データ流出防止にも対処されています。</div></td>
-                </tr>
-              </table>                </td>
-            </tr>
-            <tr>
-              <td class="font14green"><div align="left">■ 《店舗/工場 業務管理機能Webページ 》 </div></td>
-            </tr>
-            <tr>
-              <td><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td colspan="3"><div align="center"><img src="../images/products/jccl2.jpg" width="330" height="234"></div></td>
-                </tr>
-                <tr>
-                  <td width="217"> <div align="left" class="font14green">■ 《本部業務管理メインメニュー》 </div></td>
-                  <td width="70"><img src="../images/products/jccl5.jpg" width="70" height="22"></td>
-                  <td width="274" align="left"><img src="../images/products/jccl4.jpg" width="50" height="51"></td>
-                </tr>
-                <tr>
-                  <td colspan="2" align="right" valign="top"><img src="../images/products/jccl3_1.jpg" width="235" height="160"></td>
-                  <td align="left" valign="top"><img src="../images/products/jccl3_2.jpg" width="274" height="228"></td>
-                </tr>
-              </table></td>
-            </tr>
-            <tr>
-              <td><div align="left"><span class="font14green">■ システム構成</span></div></td>
-            </tr>
-            <tr>
-              <td><div align="left"><img src="../images/products/jccl13.jpg" width="560" height="249"></div></td>
-            </tr>
-            <tr>
-              <td><div align="right"><img src="../images/products/jccl12.jpg" width="308" height="162"></div></td>
-            </tr>
-            <tr>
-              <td><div align="left"><img src="../images/products/jccl10.jpg" width="560" height="460">              </div></td>
-            </tr>
-            <tr>
-              <td><div align="right"><img src="../images/products/jccl11.jpg" width="307" height="163"></div></td>
-            </tr>
-            <tr>
-              <td><div align="left" class="font14green">■ ソフト開発環境：</div></td>
-            </tr>
-            <tr>
-              <td><div align="left">
-                <table border="0" cellpadding="2" cellspacing="1" bgcolor="#D4D0C8">
-                  <tr bgcolor="#FFFFFF">
-                    <td width="86" rowspan="5" valign="center">本部サーバ </td>
-                    <td width="283">Windouws NT4.0 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　IIS4.0 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　Transaction　Server </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　SQL　Server7.0 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　ASP　　　　　　 </td>
-                  </tr>
-                  <tr bgcolor="#FFFFFF">
-                    <td rowspan="3" valign="center" bgcolor="#FFFFFF">本部クライアント </td>
-                    <td bgcolor="#FFFFFF">Windows NT4.0 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　MS　ACCESS2000 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">VB 6.0 </td>
-                  </tr>
-                  <tr bgcolor="#FFFFFF">
-                    <td rowspan="2" align="left" valign="center" bgcolor="#FFFFFF">工場側クライアント </td>
-                    <td align="left" valign="bottom" bgcolor="#FFFFFF">　Windows 98/ME/XP/2000 </td>
-                  </tr>
-                  <tr>
-                    <td bgcolor="#FFFFFF">　Internet　Explorer5以上 </td>
-                  </tr>
-                </table>
-              </div></td>
-            </tr>
-            <tr>
-              <td><div align="left" class="font14green">■ 業務実績
-
-</div></td>
-            </tr>
-            <tr>
-              <td><div align="left">本システムは、２０００年に基幹システムを開発完了し、規模約５００店舗の大手クリーニング会社にリリースしたもので実証済みです。</div></td>
-            </tr>
-            <tr>
-              <td><p align="left">&nbsp;</p>              </td>
-            </tr>
-            <tr>
-              <td><div align="left">◆ 詳しい資料をご用意しております。ぜひ<a href="../contact.htm ">お問い合わせ </a>ください。 </div></td>
-            </tr>
-        </table></td>
-      </tr>
-    </table>
- 
-<!-- フッターここから -->
-<table border="0" cellpadding="0" cellspacing="0" width="1000" bgcolor="#CEDEEE">
-  <tr>
-<!-- Shim row, height 1. -->
-   <td><img src="../images/top_logo/shim.gif" width="4" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="7" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="145" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="80" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="757" height="1" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="1" border="0"></td>
-  </tr>
-
-  <tr valign="top"><!-- row 1 -->
-   <td colspan="6"><img name="top_logo_r1_c1" src="../images/top_logo/top_logo_r1_c1.gif" width="994" height="9" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="9" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 2 -->
-   <td colspan="3"><img name="top_logo_r2_c1" src="../images/top_logo/top_logo_r2_c1.gif" width="12" height="13" border="0"></td>
-    <td colspan="3"><img name="top_logo_r2_c4" src="../images/top_logo/top_logo_r2_c4.gif" width="982" height="13" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="13" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 3 -->
-   <td colspan="4"><img name="top_logo_r3_c1" src="../images/top_logo/top_logo_r3_c1.gif" width="157" height="27" border="0"></td>
-    <td colspan="2">　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="27" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 4 -->
-   <td><img name="top_logo_r4_c1" src="../images/top_logo/top_logo_r4_c1.gif" width="4" height="13" border="0"></td>
-    <td colspan="4"><img name="top_logo_r4_c2" src="../images/top_logo/top_logo_r4_c2.gif" width="233" height="13" border="0"></td>
-    <td rowspan="3">　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="13" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 5 -->
-   <td colspan="5"><img name="top_logo_r5_c1" src="../images/top_logo/top_logo_r5_c1.gif" width="237" height="7" border="0"></td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="7" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 6 -->
-   <td colspan="2"><img name="top_logo_r6_c1" src="../images/top_logo/top_logo_r6_c1.gif" width="5" height="20" border="0"></td>
-    <td colspan="2" class="titlefont2" align="left" valign="top"><a href="#">STAFFログイン</a></td>
-    <td>　</td>
-   <td><img src="../images/top_logo/shim.gif" width="1" height="20" border="0"></td>
-  </tr>
-
-
-</table>
-
-
-<div align="center" class="fontbottom">Copyright(C)2009 JC.SYSTEM inc. All rights reserved.</div><!-- フッターここまで -->
-
-</div>
+	</div>
 </body>
+
 </html>
